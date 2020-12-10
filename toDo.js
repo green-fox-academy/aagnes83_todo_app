@@ -28,8 +28,17 @@ export class Todo {
         }
     }
 
-    addNewTasks() {
-        fs.appendFileSync('./tasks.txt', '\nnewTasks');
+    addNewTasks(newTasks) {
+        try {
+            if (!fs.existsSync('./tasks.txt')) throw Error('Unable to write file');
+            if (newTasks === '' || newTasks === true) {
+                console.log('Nem lehetséges új feladat hozzáadása: nincs megadva feladat!');
+            } else {
+                fs.appendFileSync('./tasks.txt', '\n' + newTasks);
+            }
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 
     removeTasks() {

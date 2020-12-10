@@ -12,8 +12,8 @@ function todo() {
 
     if (args.l === true) {
         myTodo.listTasks();
-    } else if (args.a === true) {
-        myTodo.addNewTasks();
+    } else if (args.hasOwnProperty('a')) {
+        myTodo.addNewTasks(args.a);
     } else if (args.r === true) {
         myTodo.removeTasks();
     } else if (args.c === true) {
