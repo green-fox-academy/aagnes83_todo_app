@@ -41,8 +41,9 @@ export class Todo {
         }
     }
 
-    removeTasks() {
-
+    removeTasks(taskIndex) {
+        this.getTasksList();
+        this.tasksList.splice(taskIndex - 1, 1);
     }
 
     printInstructions() {

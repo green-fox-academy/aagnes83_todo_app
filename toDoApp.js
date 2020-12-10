@@ -14,8 +14,8 @@ function todo() {
         myTodo.listTasks();
     } else if (args.hasOwnProperty('a')) {
         myTodo.addNewTasks(args.a);
-    } else if (args.r === true) {
-        myTodo.removeTasks();
+    } else if (args.hasOwnProperty('r')) {
+        myTodo.removeTasks(args.r);
     } else if (args.c === true) {
         //Complete a task
     } else {
