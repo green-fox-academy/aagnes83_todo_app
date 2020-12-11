@@ -8,7 +8,7 @@ export class Todo {
     getTasksList() {
         try {
             if (!fs.existsSync('./tasks.txt')) throw Error('File not exists');
-            this.tasksList = (fs.readFileSync('./tasks.txt', 'utf-8').toString().split('\n'));
+            this.tasksList = (fs.readFileSync('./tasks.txt', 'utf-8').split('\n'));
         } catch (err) {
             console.log(err.message);
         }
@@ -44,6 +44,8 @@ export class Todo {
     removeTasks(taskIndex) {
         this.getTasksList();
         this.tasksList.splice(taskIndex - 1, 1);
+        fs.writeFileSync('./tasks.txt', this.tasksList.join("\n"));
+
     }
 
     printInstructions() {
