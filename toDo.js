@@ -31,11 +31,8 @@ export class Todo {
     addNewTasks(newTasks) {
         try {
             if (!fs.existsSync('./tasks.txt')) throw Error('Unable to write file');
-            if (newTasks === '' || newTasks === true) {
-                console.log('Nem lehetséges új feladat hozzáadása: nincs megadva feladat!');
-            } else {
-                fs.appendFileSync('./tasks.txt', '\n' + newTasks);
-            }
+            if (newTasks === '' || newTasks === true) throw Error('Nem lehetséges új feladat hozzáadása: nincs megadva feladat!');
+            fs.appendFileSync('./tasks.txt', '\n' + newTasks);
         } catch (err) {
             console.log(err.message);
         }
@@ -45,16 +42,11 @@ export class Todo {
         this.getTasksList();
         try {
             if (!fs.existsSync('./tasks.txt')) throw Error('File not exists');
-            if (taskIndex === '' || taskIndex === true) {
-                console.log('Nem lehetséges az eltávolítás: nem adott meg indexet!');
-            } if (taskIndex > this.tasksList.length) {
-                console.log('Nem lehetséges az eltávolítás: túlindexelési probléma adódott!');
-                // } if (taskIndex != "number") {
-                //    console.log('Nem lehetséges az eltávolítás: a megadott index nem szám!');
-            } else {
-                this.tasksList.splice(taskIndex - 1, 1);
-                fs.writeFileSync('./tasks.txt', this.tasksList.join("\n"));
-            }
+            if (taskIndex === '' || taskIndex === true) throw Error('Nem lehetséges az eltávolítás: nem adott meg indexet!');
+            if (taskIndex > this.tasksList.length) throw Error('Nem lehetséges az eltávolítás: túlindexelési probléma adódott!');
+            if (typeof taskIndex != "number") throw Error('Nem lehetséges az eltávolítás: a megadott index nem szám!');
+            this.tasksList.splice(taskIndex - 1, 1);
+            fs.writeFileSync('./tasks.txt', this.tasksList.join("\n"));
         } catch (err) {
             console.log(err.message);
         }
