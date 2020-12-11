@@ -45,6 +45,7 @@ export class Todo {
             if (taskIndex === '' || taskIndex === true) throw Error('Nem lehetséges az eltávolítás: nem adott meg indexet!');
             if (taskIndex > this.tasksList.length) throw Error('Nem lehetséges az eltávolítás: túlindexelési probléma adódott!');
             if (typeof taskIndex != "number") throw Error('Nem lehetséges az eltávolítás: a megadott index nem szám!');
+            if (taskIndex === 0 || taskIndex === false) throw Error('Nem lehetséges az eltávolítás: a megadott index nem lehet 0!');
             this.tasksList.splice(taskIndex - 1, 1);
             fs.writeFileSync('./tasks.txt', this.tasksList.join("\n"));
         } catch (err) {
