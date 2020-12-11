@@ -43,9 +43,21 @@ export class Todo {
 
     removeTasks(taskIndex) {
         this.getTasksList();
-        this.tasksList.splice(taskIndex - 1, 1);
-        fs.writeFileSync('./tasks.txt', this.tasksList.join("\n"));
-
+        try {
+            if (!fs.existsSync('./tasks.txt')) throw Error('File not exists');
+            if (taskIndex === '' || taskIndex === true) {
+                console.log('Nem lehetséges az eltávolítás: nem adott meg indexet!');
+            } if (taskIndex > this.tasksList.length) {
+                console.log('Nem lehetséges az eltávolítás: túlindexelési probléma adódott!');
+                // } if (taskIndex != "number") {
+                //    console.log('Nem lehetséges az eltávolítás: a megadott index nem szám!');
+            } else {
+                this.tasksList.splice(taskIndex - 1, 1);
+                fs.writeFileSync('./tasks.txt', this.tasksList.join("\n"));
+            }
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 
     printInstructions() {
