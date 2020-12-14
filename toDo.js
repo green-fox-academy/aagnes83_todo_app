@@ -21,7 +21,7 @@ export class Todo {
             if (this.tasksList.length === 0 || this.tasksList[0] === '') {
                 console.log('Nincs mára tennivalód! :)');
             } else {
-                this.tasksList.forEach((task, index) => console.log(`${index + 1}. ${task}`));
+                this.tasksList.forEach((task, index) => console.log(`${index + 1}. [ ] ${task}`));
             }
         } catch (err) {
             console.log(err.message);
@@ -53,7 +53,8 @@ export class Todo {
         }
     }
 
-    printInstructions() {
+    printUserManual() {
+        console.log("");
         console.log(
             'Parancssori Todo applikáció' + '\n=============================' + '\n' + '\nParancssori argumentumok:' + '\n-l   Kilistázza a feladatokat' + '\n-a   Új feladatot ad hozzá' + '\n-r   Eltávolít egy feladatot' + '\n-c   Teljesít egy feladatot')
     };

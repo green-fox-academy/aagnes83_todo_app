@@ -10,7 +10,11 @@ let myTodo = new Todo();
 
 function todo() {
 
-    if (args.l === true) {
+    if (args != true) {
+        console.log("");
+        console.log('Nem támogatott argumentum!');
+        myTodo.printUserManual();;
+    } else if (args.l === true) {
         myTodo.listTasks();
     } else if (args.hasOwnProperty('a')) {
         myTodo.addNewTasks(args.a);
@@ -19,7 +23,7 @@ function todo() {
     } else if (args.c === true) {
         //Complete a task
     } else {
-        myTodo.printInstructions();
+        myTodo.printUserManual();
     }
 }
 
