@@ -10,7 +10,7 @@ let myTodo = new Todo();
 
 function todo() {
 
-    if (args != true) {
+    if (typeof (args._[2]) === "string" || typeof (args._[2]) === "number") {
         console.log("");
         console.log('Nem támogatott argumentum!');
         myTodo.printUserManual();;
