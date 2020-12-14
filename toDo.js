@@ -53,6 +53,21 @@ export class Todo {
         }
     }
 
+    getTaskCompleted(taskIndex) {
+        this.getTasksList();
+        try {
+            if (!fs.existsSync('./tasks.txt')) throw Error('File not exists');
+            if (taskIndex === '' || taskIndex === true) throw Error('Nem lehetséges a feladat végrehajtása: nem adtál meg indexet!');
+            if (taskIndex > this.tasksList.length) throw Error('Nem lehetséges a feladat végrehajtása: túlindexelési probléma adódott!');
+            if (typeof taskIndex != "number") throw Error('Nem lehetséges a feladat végrehajtása: a megadott index nem szám!');
+            if (taskIndex === 0) throw Error('Nem lehetséges a feladat végrehajtása: a megadott index nem lehet 0!');
+            //this.tasksList.splice(taskIndex - 1, 1);
+            //fs.writeFileSync('./tasks.txt', this.tasksList.join("\n"));
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
     printUserManual() {
         console.log("");
         console.log(

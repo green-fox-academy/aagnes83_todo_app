@@ -20,8 +20,8 @@ function todo() {
         myTodo.addNewTasks(args.a);
     } else if (args.hasOwnProperty('r')) {
         myTodo.removeTasks(args.r);
-    } else if (args.c === true) {
-        //Complete a task
+    } else if (args.hasOwnProperty('c')) {
+        myTodo.getTaskCompleted(args.c)
     } else {
         myTodo.printUserManual();
     }
