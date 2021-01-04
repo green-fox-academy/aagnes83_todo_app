@@ -1,4 +1,3 @@
-Kutyát sétáltatni
-Tejet venni
-Megcsinálni a leckét
-Megetetni a papagájt
+[ ] Kutyát sétáltatni
+[X] Tejet venni
+[ ] Megcsinálni a leckét
