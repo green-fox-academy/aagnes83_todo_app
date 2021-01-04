@@ -27,5 +27,3 @@ function todo() {
 }
 
 todo();
-
-// console.log(args);
